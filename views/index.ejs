@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+<div class="main w-full min-h-screen bg-zinc-900">
+    <div class="form p-10 text-white">
+        <form   action="/create" method="post">
+            <!-- we can see input side data of input ans textarea // only when you gave it "name" -->
+            <input class="block px-5 py-2 bg-zinc-800"   type="text" placeholder="Tital...." name="title">
+            <textarea class="block px-5 py-2 mt-2 bg-zinc-800 resize-none" placeholder="dtails over here" name="details"></textarea>
+            <input class="mt-2 bg-blue-600 px-5 py-2 rounded-md" type="submit" value="Create Task">
+        </form>
+     </div>
+     <div class="tasks flex gap-3 flex-warp p-10">
+
+        <!-- 
+        <% %> == is used to make page dynamic 
+        -->
+        <!-- we are using this for checking if there are files present in the files folder 
+                 <%if(files.length>0) %>
+
+        -->
+
+
+        <!-- we recive the data from backend as files which is array //we seen in console []
+        this is an array so we  can applay loop on it (forEach)
+         -->
+        
+        
+        <%if(files.length > 0 ){ %>
+        <!-- here val is file in files folder -->
+
+        <% files.forEach(function(val){ %>
+            <div class=" group task min-w-72  px-3 py-4 rounded-md bg-zinc-800">
+                <h1 class="text-slate-500 group-hover:text-white text-sm font-semibold"><%= val %></h1>
+                <a  class="text-blue-500 inline-block mt-3 group-hover:text-white" href="/file/<%=val%>">Read more</a>
+            </div>
+            <% }) %>
+
+            <% }else{ %>
+                <h3 class="text-zinc-600">No task yet</h3>
+
+            <% } %>
+       
+
+
+
+        
+
+     </div>
+</div>
+
+
+<script src="/javascripts/script.js"></script>
+</body>
+</html>
